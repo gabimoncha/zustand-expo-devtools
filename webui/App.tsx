@@ -7,7 +7,13 @@ export default function App() {
   const storeRefs = useRef<any>({})
 
   useEffect(() => {
-      const extension = (window as any)?.__REDUX_DEVTOOLS_EXTENSION__
+      const extension = (window as any)?.__REDUX_DEVTOOLS_EXTENSION__({
+        serialize: { 
+          options: {
+           map: true,
+          }
+        }
+      })
       if(extension){
           const subscriptions: EventSubscription[] = [];
 
